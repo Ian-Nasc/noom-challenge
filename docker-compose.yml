@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: sleep_logger_postgres
+    environment:
+      POSTGRES_DB: sleep_logger_db
+      POSTGRES_USER: sleep_user
+      POSTGRES_PASSWORD: sleep_pass
+    ports:
+      - "55432:5432"  # host:container
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - sleepnet
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sleep_logger_backend
+    environment:
+        DB_HOST: postgres
+        DB_PORT: 5432
+        DB_NAME: sleep_logger_db
+        DB_USER: sleep_user
+        DB_PASSWORD: sleep_pass
+        SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "18080:8080"  # host:container
+    depends_on:
+      - postgres
+    networks:
+      - sleepnet
+
+volumes:
+  pgdata:
+
+networks:
+  sleepnet:
