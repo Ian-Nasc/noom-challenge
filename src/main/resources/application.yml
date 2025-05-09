@@ -2,9 +2,9 @@ spring:
   application:
     name: JavaVersionTest
   datasource:
-    url: jdbc:postgresql://localhost:5432/pynne
-    username: postgres
-    password: 900505 #Mudar
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/pynne}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:900505}
     driver-class-name: org.postgresql.Driver
 
   jpa:

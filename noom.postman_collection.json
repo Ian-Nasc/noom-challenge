@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "6d462179-ddf4-421c-8f8d-4c3f59c41daf",
+		"name": "noom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26129915",
+		"_collection_link": "https://www.postman.com/navigation-administrator-70960788/workspace/noomworkspace/collection/26129915-6d462179-ddf4-421c-8f8d-4c3f59c41daf?action=share&source=collection_link&creator=26129915"
+	},
+	"item": [
+		{
+			"name": "GetAverage",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 1,\n    \"timeInBedStart\": \"2025-05-07T22:30:00\",\n    \"timeInBedEnd\": \"2025-05-08T06:45:00\",\n    \"sleepQuality\": \"OK\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:18080/api/sleep-logs/average/1"
+			},
+			"response": []
+		},
+		{
+			"name": "GetLast",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"redirect_uri": "http://127.0.0.1:3000",
+						"accessTokenUrl": "https://accounts.google.com",
+						"authUrl": "https://accounts.google.com",
+						"clientId": "{{vault:google-oauth-token}}",
+						"clientSecret": "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\n",
+						"grant_type": "authorization_code",
+						"tokenName": "Example",
+						"addTokenTo": "header"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:18080/api/sleep-logs/last/1"
+			},
+			"response": []
+		},
+		{
+			"name": "CreateSleepLog",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 1,\n    \"timeInBedStart\":\"2025-05-18T22:00:00\" ,\n    \"timeInBedEnd\": \"2025-05-19T06:00:00\",\n    \"sleepQuality\": \"BAD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:18080/api/sleep-logs"
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Pedro\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:18080/api/users"
+			},
+			"response": []
+		}
+	]
+}
