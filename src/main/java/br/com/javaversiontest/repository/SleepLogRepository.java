@@ -21,4 +21,6 @@ public interface SleepLogRepository extends JpaRepository<SleepLog, Long> {
             @Param("user") User user,
             @Param("startDate") LocalDate startDate
     );
+
+    Optional<SleepLog> findAllById(Long id);
 }

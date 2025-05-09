@@ -4,6 +4,7 @@ package br.com.javaversiontest.domain.responses;
 import br.com.javaversiontest.domain.SleepLog;
 import br.com.javaversiontest.domain.enums.SleepQuality;
 import lombok.Data;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Data
+@Getter
 public class SleepLogAveragesResponse {
     private LocalDate startDate;
     private LocalDate endDate;
